@@ -43,7 +43,37 @@ NoteNexus is a full-stack application designed to manage and organize notes effi
 
 ## Folder Structure
 
-NoteNexus/ │ ├── client/ # React frontend │ ├── public/ # Public assets │ ├── src/ # React source files │ │ ├── components/ # Reusable components │ │ ├── features/ # Redux slices │ │ ├── pages/ # Page components │ │ ├── App.js # Main React component │ │ └── index.js # Entry point for React │ └── .env # Environment variables for frontend │ ├── server/ # Node.js backend │ ├── controllers/ # Route handlers │ ├── models/ # Mongoose models │ ├── routes/ # API routes │ ├── middleware/ # Authentication middleware │ ├── config/ # Configuration files │ ├── .env # Environment variables for backend │ ├── index.js # Entry point for server │ └── package.json # Node.js dependencies │ ├── .gitignore # Git ignore rules ├── README.md # Project documentation └── package.json # Project metadata
+NoteNexus/
+├── client/                        # React frontend
+│   ├── public/                    # Public assets
+│   ├── src/                       # React source files
+│   │   ├── components/            # Reusable components
+│   │   ├── features/              # Redux slices
+│   │   ├── pages/                 # Page components
+│   │   ├── App.js                 # Main React component
+│   │   └── index.js               # Entry point for React
+│   ├── .env                       # Environment variables for frontend
+│   ├── package.json               # React dependencies
+│   ├── package-lock.json          # React dependencies lock file
+│   └── README.md                  # Client-side documentation
+
+├── server/                        # Node.js backend
+│   ├── controllers/               # Route handlers
+│   ├── models/                    # Mongoose models
+│   ├── routes/                    # API routes
+│   ├── middleware/                # Authentication middleware
+│   ├── config/                    # Configuration files
+│   ├── .env                       # Environment variables for backend
+│   ├── index.js                   # Entry point for server
+│   ├── package.json               # Node.js dependencies
+│   ├── package-lock.json          # Node.js dependencies lock file
+│   └── README.md                  # Server-side documentation
+
+├── .gitignore                     # Git ignore rules
+├── README.md                      # Project documentation
+├── package-lock.json              # Node.js dependencies lock file
+└── package.json                   # Project metadata
+
 
 ## Setup Instructions
 
