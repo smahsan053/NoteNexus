@@ -1,0 +1,14 @@
+{
+  "name": "notenexus",
+  "version": "0.1.0",
+  "private": true,
+  "description": "NoteNexus! Where Ideas Connect",
+  "scripts": {
+    "client": "npm start --prefix client",
+    "server": "nodemon server/server.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

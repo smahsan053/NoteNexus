@@ -1,0 +1,20 @@
+# Node.js modules
+node_modules/
+
+# Logs
+logs/
+*.log
+
+# Environment variables
+server/.env
+client/.env
+.env
+
+# Build directories
+client/build/
+client/.next/
+
+# Miscellaneous
+.DS_Store
+*.swp
+*.swo
