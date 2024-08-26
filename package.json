@@ -5,7 +5,7 @@
   "description": "NoteNexus! Where Ideas Connect",
   "scripts": {
     "client": "npm start --prefix client",
-    "server": "nodemon server/server.js",
+    "server": "npm run server --prefix server",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "devDependencies": {
