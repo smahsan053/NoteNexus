@@ -8,7 +8,7 @@ export const fetchUser = (req, res, next) => {
     res.status(401).send({ error: "Please authenticate using a valid token" });
   }
   try {
-    const payloadData = jwt.verify(token, process.env.JWT_SECRET);
+    const payloadData = jwt.verify(token, process.env.JWT_SECRET);    
     req.user = payloadData;
     next();
   } catch (error) {
