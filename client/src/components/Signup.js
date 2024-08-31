@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { toast } from "react-toastify";
+
 export default function Signup() {
   const [credentials, setCredentials] = useState({
     name: "",
@@ -43,6 +45,8 @@ export default function Signup() {
       if (json.success) {
         // localStorage.setItem("token", json.authToken);
         navigate("/login");
+        toast.success("Your account has been created successfully!");
+        toast.info("Now Login to continue using NoteNexus!");
       } else {
         console.error("Invalid Credentials");
       }

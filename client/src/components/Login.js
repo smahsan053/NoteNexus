@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { getLoggedIn, loginHandler } from "../features/auth/AuthSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 export default function Example() {
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ export default function Example() {
     const loginAction = await dispatch(getLoggedIn(credentials));
     if (getLoggedIn.fulfilled.match(loginAction)) {
       navigate("/");
+      toast.success("Login successful!")
     } else {
       console.error("Login failed");
     }
