@@ -16,15 +16,22 @@ const navigation = [
 
 export default function Navbar() {
   const authState = useSelector((state) => state.auth.auth);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(true);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [avatarOpen, setAvatarOpen] = useState(false);
+  const [hiddenclass, setHiddenClass] = useState(false);
   const dispatch = useDispatch();
   const location = useLocation();
+
   console.log(dispatch(loginHandler(authState)).payload);
 
   const handleLogout = () => {
     // setIsLoggedIn(false);
     dispatch(loginHandler(false));
     localStorage.removeItem("token");
+  };
+  const handleAvatar = (status) => {
+    setAvatarOpen(status);
+    setHiddenClass(status);
   };
   useEffect(() => {
     dispatch(loginHandler(authState));
@@ -46,7 +53,10 @@ export default function Navbar() {
               className="-m-2.5 inline-flex items-center justify-center rounded-md pr-14 text-gray-700"
             >
               <span className="sr-only">Open main menu</span>
-              <Bars3Icon aria-hidden="true" className="h-6 w-6" />
+              <Bars3Icon
+                aria-hidden="true"
+                className={`${hiddenclass ? "hidden" : ""} h-6 w-6`}
+              />
             </button>
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
@@ -62,12 +72,54 @@ export default function Navbar() {
           </div>
           {dispatch(loginHandler(authState)).payload ? (
             <>
-              <Profile />
-              <div className="hidden lg:flex lg:flex-1 lg:justify-end pr-20 gap-10">
+              <div className="hidden">
+                <Profile
+                  className={hiddenclass ? "hidden" : ""}
+                  open={avatarOpen}
+                  setOpen={() => {
+                    handleAvatar(false);
+                  }}
+                  handleLogout={handleLogout}
+                />
+              </div>
+              {/* Avatar Start */}
+
+              <button
+                type="button"
+                onClick={() => {
+                  handleAvatar(true);
+                }}
+                className="absolute lg:flex lg:flex-1 lg:justify-end right-24"
+              >
+                <div
+                  className={`relative ${
+                    hiddenclass ? "hidden" : ""
+                  } w-10 h-10 overflow-hidden bg-teal-500 rounded-full dark:bg-teal-700`}
+                >
+                  <svg
+                    className="absolute w-12 h-12 text-teal-200 -left-1"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                      clipRule="evenodd"
+                    ></path>
+                  </svg>
+                </div>
+              </button>
+
+              {/* Avatar Close */}
+
+              <div className="hidden lg:flex lg:flex-1 lg:justify-end pr-48 gap-10">
                 <Link
                   to="/login"
                   onClick={handleLogout}
-                  className="text-sm font-semibold leading-6 text-gray-900"
+                  className={`${
+                    hiddenclass ? "hidden" : ""
+                  } text-sm font-semibold leading-6 text-gray-900`}
                 >
                   Logout <span aria-hidden="true">&rarr;</span>
                 </Link>
@@ -100,7 +152,7 @@ export default function Navbar() {
         </nav>
         <Dialog
           open={mobileMenuOpen}
-          onClose={setMobileMenuOpen}
+          onClose={() => setMobileMenuOpen(false)}
           className="lg:hidden"
         >
           <div className="fixed inset-0 z-50" />
@@ -126,6 +178,7 @@ export default function Navbar() {
                     <Link
                       key={item.name}
                       to={item.to}
+                      onClick={() => setMobileMenuOpen(false)}
                       className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                     >
                       {item.name}
@@ -136,7 +189,10 @@ export default function Navbar() {
                   <div className="py-6">
                     <Link
                       to="/login"
-                      onClick={handleLogout}
+                      onClick={() => {
+                        handleLogout();
+                        setMobileMenuOpen(false);
+                      }}
                       className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                     >
                       Logout
@@ -148,6 +204,7 @@ export default function Navbar() {
                       {location.pathname === "/login" ? (
                         <Link
                           to="/createuser"
+                          onClick={() => setMobileMenuOpen(false)}
                           className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                         >
                           Signup
@@ -157,6 +214,7 @@ export default function Navbar() {
                           to="/login"
                           onClick={() => {
                             dispatch(loginHandler(authState));
+                            setMobileMenuOpen(false);
                           }}
                           className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                         >

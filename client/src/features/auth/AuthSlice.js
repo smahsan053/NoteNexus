@@ -21,6 +21,19 @@ export const getLoggedIn = createAsyncThunk(
     return data;
   }
 );
+export const getUser = createAsyncThunk("auth/getuser", async (_, thunkAPI) => {
+  const response = await fetch("/api/auth/getuser", {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+      "auth-token": localStorage.getItem("token"),
+    },
+  });
+  const data = await response.json();
+  console.log(data.user);
+
+  return data.user;
+});
 
 const authSlice = createSlice({
   name: "auth",
@@ -41,6 +54,11 @@ const authSlice = createSlice({
         state.auth = false;
         console.error("Invalid email or password");
       }
+    });
+    builder.addCase(getUser.fulfilled, (state, action) => {
+      const data = action.payload;
+      console.log(data);
+      // return data
     });
   },
 });
