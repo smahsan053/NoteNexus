@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import deleteIcon from "../deleteIcon.png";
-import editIcon from "../editIcon.png";
+import deleteIcon from "../assets/deleteIcon.png";
+import editIcon from "../assets/editIcon.png";
 // import { useDispatch } from "react-redux";
 import { deleteNote, updateNote } from "../features/note/NoteSlice";
 import UpdateNote from "./UpdateNote";

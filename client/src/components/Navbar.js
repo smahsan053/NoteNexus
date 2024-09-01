@@ -8,7 +8,7 @@ import {
   DialogBackdrop,
 } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import logo from "../NoteNexus-logo.png";
+import logo from "../assets/NoteNexus-logo.png";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { loginHandler } from "../features/auth/AuthSlice";

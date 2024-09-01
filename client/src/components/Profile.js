@@ -6,7 +6,7 @@ import {
   TransitionChild,
 } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import logo from "../NoteNexus-logo.png";
+import logo from "../assets/NoteNexus-logo.png";
 import { Link } from "react-router-dom";
 import { getUser } from "../features/auth/AuthSlice";
 import { useDispatch } from "react-redux";
