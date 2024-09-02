@@ -2,11 +2,12 @@
   "name": "notenexus-backend",
   "version": "1.0.0",
   "description": "backend for notenexus",
-  "main": "index.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
-    "server": "nodemon server.js"
-  },
+  "server": "nodemon server.js",
+  "start": "node server.js"
+},
   "author": "Ahsan Ali",
   "license": "ISC",
   "dependencies": {

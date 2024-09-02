@@ -18,3 +18,5 @@ client/.next/
 .DS_Store
 *.swp
 *.swo
+
+.vercel
