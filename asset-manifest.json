@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/NoteNexus/static/css/main.bc1805c1.css",
+    "main.js": "/NoteNexus/static/js/main.2c9334ef.js",
+    "static/media/NoteNexus-logo.png": "/NoteNexus/static/media/NoteNexus-logo.9a098c91a86fc34eef98.png",
+    "static/media/deleteIcon.png": "/NoteNexus/static/media/deleteIcon.d9cfee7874f511548e66.png",
+    "index.html": "/NoteNexus/index.html",
+    "main.bc1805c1.css.map": "/NoteNexus/static/css/main.bc1805c1.css.map",
+    "main.2c9334ef.js.map": "/NoteNexus/static/js/main.2c9334ef.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bc1805c1.css",
+    "static/js/main.2c9334ef.js"
+  ]
+}
