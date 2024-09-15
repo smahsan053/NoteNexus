@@ -10,17 +10,28 @@ const port = process.env.PORT || 3000;
 const app = express();
 connectToMongo();
 
-app.use(express.json());
 // Use CORS and specify your frontend domain
-app.use(
-  cors({
-    origin:
-      "https://client-cfvt95jpp-syed-muhammad-ahsan-alis-projects.vercel.app", // Frontend URL
-    methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
-    credentials: true, // If your requests include credentials like cookies
-  })
-);
+const corsOptions = {
+  origin: "https://client-mu-snowy.vercel.app", // Frontend domain
+  methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
+  credentials: true, // If you're using credentials (like cookies or authentication tokens)
+  allowedHeaders: ["Content-Type", "Authorization"], // Explicitly allow headers
+};
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
+// Handling preflight (OPTIONS) requests for CORS
+app.options("*", (req, res) => {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://client-mu-snowy.vercel.app"
+  );
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.sendStatus(200);
+});
 
+app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/notes", noteRoutes);
 
