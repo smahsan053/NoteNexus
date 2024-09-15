@@ -5,9 +5,9 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-  "server": "nodemon server.js",
-  "start": "node server.js"
-},
+    "server": "nodemon server.js",
+    "start": "node server.js"
+  },
   "author": "Ahsan Ali",
   "license": "ISC",
   "dependencies": {
@@ -17,6 +17,7 @@
     "express": "^4.19.2",
     "express-validator": "^7.2.0",
     "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.8.0",
     "mongoose": "^8.5.4"
   },
   "devDependencies": {

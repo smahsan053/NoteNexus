@@ -1,6 +1,6 @@
 {
   "name": "client",
-  "homepage": "https://smahsan053.github.io/NoteNexus/#",
+  "homepage": ".",
   "version": "0.1.0",
   "private": false,
   "dependencies": {
