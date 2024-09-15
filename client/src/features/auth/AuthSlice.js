@@ -3,11 +3,12 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 const initialState = {
   auth: localStorage.getItem("token") ? true : false,
 };
+const apiUrl = process.env.REACT_APP_API_URL;
 
 export const getLoggedIn = createAsyncThunk(
   "auth/getLoggedIn",
   async (credentials, thunkAPI) => {
-    const response = await fetch("/api/auth/login", {
+    const response = await fetch(`${apiUrl}/api/auth/login`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -22,7 +23,7 @@ export const getLoggedIn = createAsyncThunk(
   }
 );
 export const getUser = createAsyncThunk("auth/getuser", async (_, thunkAPI) => {
-  const response = await fetch("/api/auth/getuser", {
+  const response = await fetch(`${apiUrl}/api/auth/getuser`, {
     method: "POST",
     headers: {
       "Content-type": "application/json",

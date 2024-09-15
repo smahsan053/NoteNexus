@@ -1,6 +1,6 @@
 import "./App.css";
 import {
-  createBrowserRouter,
+  createHashRouter,
   RouterProvider,
   createRoutesFromElements,
   Route,
@@ -12,7 +12,7 @@ import Login from "../src/components/Login.js";
 import Signup from "./components/Signup.js";
 
 function App() {
-  const router = createBrowserRouter(
+  const router = createHashRouter(
     createRoutesFromElements(
       <Route path="/" element={<Layout />}>
         <Route path="" element={<Home />} />

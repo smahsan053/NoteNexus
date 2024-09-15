@@ -11,6 +11,7 @@ export default function Signup() {
   });
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   const onChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -29,7 +30,7 @@ export default function Signup() {
 
     // Proceed with form submission
     try {
-      const response = await fetch("/api/auth/createuser", {
+      const response = await fetch(`${apiUrl}/api/auth/createuser`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -3,11 +3,12 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 const initialState = {
   notes: [],
 };
+const apiUrl = process.env.REACT_APP_API_URL;
 
 export const getAllNotes = createAsyncThunk(
   "notes/getAllNotes",
   async (_, thunkAPI) => {
-    const response = await fetch(`/api/notes/fetchallnotes`, {
+    const response = await fetch(`${apiUrl}/api/notes/fetchallnotes`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -23,7 +24,7 @@ export const getAllNotes = createAsyncThunk(
 export const addNote = createAsyncThunk(
   "notes/addnote",
   async (note, thunkAPI) => {
-    const response = await fetch(`/api/notes/addnote`, {
+    const response = await fetch(`${apiUrl}/api/notes/addnote`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -43,7 +44,7 @@ export const addNote = createAsyncThunk(
 export const updateNote = createAsyncThunk(
   "notes/updatenote",
   async (note, thunkAPI) => {
-    const response = await fetch(`/api/notes/updatenote/${note._id}`, {
+    const response = await fetch(`${apiUrl}/api/notes/updatenote/${note._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -63,7 +64,7 @@ export const updateNote = createAsyncThunk(
 export const deleteNote = createAsyncThunk(
   "notes/deletenote",
   async (id, thunkAPI) => {
-    const response = await fetch(`/api/notes/deletenote/${id}`, {
+    const response = await fetch(`${apiUrl}/api/notes/deletenote/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
