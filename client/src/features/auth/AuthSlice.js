@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 
 const initialState = {
   auth: localStorage.getItem("token") ? true : false,
@@ -31,8 +32,6 @@ export const getUser = createAsyncThunk("auth/getuser", async (_, thunkAPI) => {
     },
   });
   const data = await response.json();
-  console.log(data.user);
-
   return data.user;
 });
 
@@ -50,16 +49,16 @@ const authSlice = createSlice({
       if (action.payload.success) {
         state.auth = true;
         localStorage.setItem("token", action.payload.authToken);
-        console.log("Login successful");
+        toast.success("Login successful!");
       } else {
         state.auth = false;
-        console.error("Invalid email or password");
+        toast.error("Invalid email or password");
       }
     });
     builder.addCase(getUser.fulfilled, (state, action) => {
-      const data = action.payload;
-      console.log(data);
-      // return data
+      // const data = action.payload;
+      // console.log(data);
+      // return data;
     });
   },
 });

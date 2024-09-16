@@ -42,17 +42,32 @@ export default function Signup() {
         }),
       });
 
+      if (!response.ok) {
+        // Check if it's a 400 error (e.g., email already registered)
+        if (response.status === 400) {
+          toast.error(
+            "This email is already registered. Please try again with a different email."
+          );
+        } else {
+          // Handle other types of errors (server issues, etc.)
+          toast.error("An error occurred. Please try again later.");
+        }
+        return; // Exit if there's an error
+      }
+
       const json = await response.json();
       if (json.success) {
         // localStorage.setItem("token", json.authToken);
         navigate("/login");
         toast.success("Your account has been created successfully!");
         toast.info("Now Login to continue using NoteNexus!");
+        return;
       } else {
-        console.error("Invalid Credentials");
+        toast.error("Invalid Credentials. Please try again.");
+        return;
       }
     } catch (error) {
-      console.error("Error:", error);
+      toast.error("An error occurred. Please try again later.");
     }
   };
 

@@ -13,11 +13,9 @@ export default function UpdateNote(props) {
   const dispatch = useDispatch();
   const ref = useRef(null);
   const onChange = (e) => {
-    // console.log(note);
     setNote({ ...note, [e.target.name]: e.target.value });
   };
   const handleSubmit = (e) => {
-    // console.log(note);
     e.preventDefault();
     dispatch(updateNote(note));
     props.setOpen(false);

@@ -26,9 +26,6 @@ export default function Navbar() {
   const [hiddenclass, setHiddenClass] = useState(false);
   const dispatch = useDispatch();
   const location = useLocation();
-
-  console.log(dispatch(loginHandler(authState)).payload);
-
   const handleLogout = () => {
     // setIsLoggedIn(false);
     dispatch(loginHandler(false));

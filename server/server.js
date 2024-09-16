@@ -12,10 +12,10 @@ connectToMongo();
 
 // Use CORS and specify your frontend domain
 const corsOptions = {
-  origin: "https://client-mu-snowy.vercel.app", // Frontend domain
-  methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
-  credentials: true, // If you're using credentials (like cookies or authentication tokens)
-  allowedHeaders: ["Content-Type", "Authorization"], // Explicitly allow headers
+  origin: "https://client-mu-snowy.vercel.app", // Your frontend URL
+  methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
+  credentials: true, // Allow credentials if necessary
+  allowedHeaders: ["Content-Type", "Authorization", "auth-token"], // Allow specific headers
 };
 app.use(cors(corsOptions));
 app.options("*", cors(corsOptions));

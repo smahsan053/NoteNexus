@@ -13,7 +13,6 @@ export default function Home() {
     description: "",
     tag: "",
   });
-  console.log(window.location.pathname);
 
   const onChange = (e) => {
     setNote({ ...note, [e.target.name]: e.target.value });

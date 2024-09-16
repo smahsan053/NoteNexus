@@ -16,7 +16,6 @@ export const getAllNotes = createAsyncThunk(
       },
     });
     const data = await response.json();
-    console.log(data);
     return data;
   }
 );
@@ -84,17 +83,13 @@ const noteSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getAllNotes.fulfilled, (state, action) => {
-      // console.log(state.notes);
 
       state.notes = action.payload;
-      // console.log(state.notes);
     });
     builder.addCase(addNote.fulfilled, (state, action) => {
       state.notes.push(action.payload);
     });
     builder.addCase(updateNote.fulfilled, (state, action) => {
-      // console.log("State:", state.notes);
-      // console.log("Action:", action.payload);
       // Find the index of the note to update
       const index = state.notes.findIndex(
         (note) => note._id === action.payload._id
@@ -108,7 +103,6 @@ const noteSlice = createSlice({
         state.notes.push(action.payload);
       }
 
-      // console.log("State after update:", state.notes);
     });
     builder.addCase(deleteNote.fulfilled, (state, action) => {
       state.notes = state.notes.filter(
