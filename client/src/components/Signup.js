@@ -75,7 +75,7 @@ export default function Signup() {
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm text-center">
-          <h2 className="mt-20 text-nowrap text-4xl font-bold leading-tight text-teal-600">
+          <h2 className="mt-20 text-wrap text-4xl font-bold leading-tight text-teal-600">
             Sign Up for NoteNexus
           </h2>
         </div>
